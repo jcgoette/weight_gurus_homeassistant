@@ -1,0 +1,6 @@
+{
+  "domains": "sensor",
+  "iot_class": "Cloud Polling",
+  "name": "Weight Gurus",
+  "render_readme": true
+}
