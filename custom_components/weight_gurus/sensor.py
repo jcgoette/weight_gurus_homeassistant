@@ -131,10 +131,13 @@ class WeightGurusData:
         operation_response = requests.get(
             f"{ATTR_URL}/operation/", headers=headers_operation
         )
-        operation_json = operation_response.json()
+        operation_json = sorted(
+            operation_response.json().get(ATTR_OPERATIONS),
+            key=lambda x: x[ATTR_ENTRY_TIMESTAMP],
+        )
 
         # TODO: account for deleted entries
-        for entry in operation_json[ATTR_OPERATIONS][-1:]:
+        for entry in operation_json[-1:]:
             entry_data = {}
 
             entry_data[ATTR_ENTRY_TIMESTAMP] = entry.get(ATTR_ENTRY_TIMESTAMP)
