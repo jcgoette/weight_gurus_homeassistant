@@ -1,13 +1,28 @@
 {
-  "config": {
-    "step": {
-      "user": {
-        "title": "Weight Gurus Login Information",
-        "data": {
-          "email": "email",
-          "password": "password"
+    "config": {
+        "step": {
+            "user": {
+                "title": "Weight Gurus",
+                "data": {
+                    "email": "Email",
+                    "password": "Password"
+                }
+            }
+        },
+        "error": {
+            "auth": "Email/Password is wrong."
+        },
+        "abort": {
+            "single_instance_allowed": "Only a single instance is allowed."
         }
-      }
+    },
+    "options": {
+        "step": {
+            "user": {
+                "data": {
+                    "sensor": "Sensor enabled."
+                }
+            }
+        }
     }
-  }
 }
