@@ -9,7 +9,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import StateType
 
-from .const import DOMAIN, NAME
+from .const import ATTR_FIRST_NAME, ATTR_LAST_NAME, DOMAIN, NAME
 from .coordinator import WeightGurusDataUpdateCoordinator
 from .entity import WeightGurusEntity
 
@@ -110,7 +110,7 @@ class WeightGurusSensor(WeightGurusEntity, SensorEntity):
         name_builder = {
             key: value
             for key, value in self.coordinator.data.items()
-            if key in ["firstName", "lastName"]
+            if key in [ATTR_FIRST_NAME, ATTR_LAST_NAME]
         }
         name_builder = {
             "name": NAME,
