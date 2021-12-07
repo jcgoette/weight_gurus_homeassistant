@@ -7,6 +7,6 @@
     "LICENSE",
     "manifest.json"
   ],
-  "ignoreWords": ["hacs", "hass", "homeassistant", "isort"],
+  "ignoreWords": ["aiohttp", "gaierror", "hacs", "hass", "homeassistant", "isort"],
   "language": "en"
 }
