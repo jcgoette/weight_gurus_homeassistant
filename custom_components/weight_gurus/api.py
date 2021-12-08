@@ -43,7 +43,7 @@ class WeightGurusApiClient:
         }
         return headers
 
-    async def async_get_token_and_save_account_dict(self) -> dict:
+    async def async_get_token_and_save_account_dict(self) -> str:
         """Get account access token and save account dict."""
         # TODO: check self._token_expires_at before requesting new token (but this might not be a good idea if goalType, goalWeight, and initialWeight change frequently)
         account_credentials = {CONF_EMAIL: self._email, CONF_PASSWORD: self._password}

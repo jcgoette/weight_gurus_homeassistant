@@ -18,7 +18,7 @@ from .entity import WeightGurusEntity
 class WeightGurusEntityDescription(SensorEntityDescription):
     """WeightGurusEntityDescription."""
 
-    pretty_key: str = None
+    pretty_key: str = ""
 
 
 SENSOR_TYPES: tuple[WeightGurusEntityDescription, ...] = (
