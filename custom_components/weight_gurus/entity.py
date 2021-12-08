@@ -50,3 +50,8 @@ class WeightGurusEntity(CoordinatorEntity):
             ATTR_HEIGHT: str(self.coordinator.data.get(ATTR_HEIGHT) / 10),
             ATTR_ACTIVITY_LEVEL: str(self.coordinator.data.get(ATTR_ACTIVITY_LEVEL)),
         }
+
+    @property
+    def state_class(self) -> str:
+        """Return the state class."""
+        return "measurement"

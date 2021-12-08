@@ -27,46 +27,39 @@ SENSOR_TYPES: tuple[WeightGurusEntityDescription, ...] = (
         key="bodyFat",
         native_unit_of_measurement="%",
         pretty_key="Body Fat",
-        state_class="measurement",
     ),
     WeightGurusEntityDescription(
         icon="mdi:scale-bathroom",
         key="bmi",
         native_unit_of_measurement="kg/m2",
         pretty_key="BMI",
-        state_class="measurement",
     ),
     WeightGurusEntityDescription(
         icon="mdi:scale-bathroom",
         key="goalWeight",
         pretty_key="Goal Weight",
-        state_class="measurement",
     ),
     WeightGurusEntityDescription(
         icon="mdi:scale-bathroom",
         key="initialWeight",
         pretty_key="Initial Weight",
-        state_class="measurement",
     ),
     WeightGurusEntityDescription(
         icon="mdi:percent",
         key="muscleMass",
         native_unit_of_measurement="%",
         pretty_key="Muscle Mass",
-        state_class="measurement",
     ),
     WeightGurusEntityDescription(
         icon="mdi:water-percent",
         key="water",
         native_unit_of_measurement="%",
         pretty_key="Water",
-        state_class="measurement",
     ),
     WeightGurusEntityDescription(
         icon="mdi:scale-bathroom",
         key="weight",
         pretty_key="Weight",
-        state_class="measurement",
     ),
 )
 
