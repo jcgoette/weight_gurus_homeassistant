@@ -93,7 +93,7 @@ class WeightGurusSensor(WeightGurusEntity, SensorEntity):
         self._description = description
 
     @property
-    def icon(self) -> str:
+    def icon(self) -> str | None:
         """Return the icon."""
         return self._description.icon
 

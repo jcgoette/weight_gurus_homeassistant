@@ -71,7 +71,7 @@ class WeightGurusFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
             errors=self._errors,
         )
 
-    async def _test_credentials(self, email: str, password: str) -> OptionsFlow:
+    async def _test_credentials(self, email: str, password: str) -> bool:
         """Test if the credentials are valid."""
         try:
             session = async_create_clientsession(self.hass)
