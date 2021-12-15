@@ -8,6 +8,8 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import StateType
+from homeassistant.util.dt import as_local, parse_datetime
+from voluptuous.validators import Datetime
 
 from .const import (
     ATTR_ACTIVITY_LEVEL,
@@ -109,6 +111,25 @@ class WeightGurusSensor(WeightGurusEntity, SensorEntity):
     def available(self) -> bool:
         """Return True if entity is available."""
         return self.coordinator.data[self._description.key]
+
+    @property
+    def extra_state_attributes(self) -> dict[str, str | Datetime]:
+        """Return the extra state attributes."""
+        extra_state_attributes = {
+            ATTR_FIRST_NAME: str(self.coordinator.data.get(ATTR_FIRST_NAME)),
+            ATTR_LAST_NAME: str(self.coordinator.data.get(ATTR_LAST_NAME)),
+            ATTR_HEIGHT: str(self.coordinator.data.get(ATTR_HEIGHT) / 10),
+            ATTR_ACTIVITY_LEVEL: str(self.coordinator.data.get(ATTR_ACTIVITY_LEVEL)),
+        }
+        if self.coordinator.data.get(f"{self._description.key}_{ATTR_ENTRY_TIMESTAMP}"):
+            timestamp_str = self.coordinator.data[
+                f"{self._description.key}_{ATTR_ENTRY_TIMESTAMP}"
+            ]
+            timestamp_dt = parse_datetime(timestamp_str)
+            timestamp_local = as_local(timestamp_dt)
+            extra_state_attributes[ATTR_ENTRY_TIMESTAMP] = timestamp_local
+        return extra_state_attributes
+
     @property
     def icon(self) -> str | None:
         """Return the icon."""
