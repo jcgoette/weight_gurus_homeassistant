@@ -9,7 +9,20 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.typing import StateType
 
-from .const import ATTR_FIRST_NAME, ATTR_LAST_NAME, DOMAIN, NAME
+from .const import (
+    ATTR_ACTIVITY_LEVEL,
+    ATTR_BMI,
+    ATTR_BODY_FAT,
+    ATTR_ENTRY_TIMESTAMP,
+    ATTR_FIRST_NAME,
+    ATTR_HEIGHT,
+    ATTR_LAST_NAME,
+    ATTR_MUSCLE_MASS,
+    ATTR_WATER,
+    ATTR_WEIGHT,
+    DOMAIN,
+    NAME,
+)
 from .coordinator import WeightGurusDataUpdateCoordinator
 from .entity import WeightGurusEntity
 
@@ -24,13 +37,13 @@ class WeightGurusEntityDescription(SensorEntityDescription):
 SENSOR_TYPES: tuple[WeightGurusEntityDescription, ...] = (
     WeightGurusEntityDescription(
         icon="mdi:percent",
-        key="bodyFat",
+        key=ATTR_BODY_FAT,
         native_unit_of_measurement="%",
         pretty_key="Body Fat",
     ),
     WeightGurusEntityDescription(
         icon="mdi:scale-bathroom",
-        key="bmi",
+        key=ATTR_BMI,
         native_unit_of_measurement="kg/m2",
         pretty_key="BMI",
     ),
@@ -46,19 +59,19 @@ SENSOR_TYPES: tuple[WeightGurusEntityDescription, ...] = (
     ),
     WeightGurusEntityDescription(
         icon="mdi:percent",
-        key="muscleMass",
+        key=ATTR_MUSCLE_MASS,
         native_unit_of_measurement="%",
         pretty_key="Muscle Mass",
     ),
     WeightGurusEntityDescription(
         icon="mdi:water-percent",
-        key="water",
+        key=ATTR_WATER,
         native_unit_of_measurement="%",
         pretty_key="Water",
     ),
     WeightGurusEntityDescription(
         icon="mdi:scale-bathroom",
-        key="weight",
+        key=ATTR_WEIGHT,
         pretty_key="Weight",
     ),
 )

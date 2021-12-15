@@ -7,15 +7,7 @@ from homeassistant.const import CONF_EMAIL
 from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import (
-    ATTR_ACTIVITY_LEVEL,
-    ATTR_FIRST_NAME,
-    ATTR_HEIGHT,
-    ATTR_LAST_NAME,
-    DOMAIN,
-    NAME,
-    VERSION,
-)
+from .const import ATTR_MEASUREMENT, DOMAIN, NAME, VERSION
 from .coordinator import WeightGurusDataUpdateCoordinator
 
 
@@ -54,4 +46,4 @@ class WeightGurusEntity(CoordinatorEntity):
     @property
     def state_class(self) -> str:
         """Return the state class."""
-        return "measurement"
+        return ATTR_MEASUREMENT
