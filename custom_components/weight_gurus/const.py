@@ -9,7 +9,7 @@ from logging import Logger, getLogger
 DATA_COORDINATOR_UPDATE_INTERVAL: timedelta = timedelta(minutes=5)
 DOMAIN: str = "weight_gurus"
 NAME: str = "Weight Gurus"
-VERSION: str = "v1.2.0"
+VERSION: str = "v2.0.2"
 LOGGER: Logger = getLogger(__package__)
 
 # Platforms

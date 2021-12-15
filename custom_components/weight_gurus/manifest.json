@@ -6,5 +6,5 @@
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/jcgoette/weight_gurus_homeassistant/issues",
   "name": "Weight Gurus",
-  "version": "v2.0.1"
+  "version": "v2.0.2"
 }
