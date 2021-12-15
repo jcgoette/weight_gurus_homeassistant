@@ -93,6 +93,10 @@ class WeightGurusSensor(WeightGurusEntity, SensorEntity):
         self._description = description
 
     @property
+    def available(self) -> bool:
+        """Return True if entity is available."""
+        return self.coordinator.data[self._description.key]
+    @property
     def icon(self) -> str | None:
         """Return the icon."""
         return self._description.icon

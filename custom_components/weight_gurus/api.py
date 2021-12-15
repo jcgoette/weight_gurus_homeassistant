@@ -6,7 +6,7 @@ import aiohttp
 import async_timeout
 from homeassistant.const import CONF_EMAIL, CONF_PASSWORD
 
-from .const import LOGGER
+from .const import ATTR_ENTRY_TIMESTAMP, ATTR_KEYS, LOGGER
 
 TIMEOUT = 10
 
@@ -59,10 +59,24 @@ class WeightGurusApiClient:
     async def get_last_entry_and_merge_dicts(self, data: dict) -> dict:
         """Get last entry and merge dicts."""
         sorted_data = sorted(
-            data["operations"],
-            key=lambda x: x["entryTimestamp"],
+            data["operations"], key=lambda x: x[ATTR_ENTRY_TIMESTAMP], reverse=True
         )
-        last_entry = sorted_data[-1:][0]
+
+        last_entry = {}
+        for key in ATTR_KEYS:
+            for entry in sorted_data:
+                if entry[key]:
+                    last_entry[key] = entry[key]
+                    last_entry[f"{key}_{ATTR_ENTRY_TIMESTAMP}"] = entry[
+                        ATTR_ENTRY_TIMESTAMP
+                    ]
+                    break
+                elif entry == sorted_data[-1] and not entry[key]:
+                    last_entry[key] = None
+                    last_entry[f"{key}_{ATTR_ENTRY_TIMESTAMP}"] = None
+                else:
+                    continue
+
         merged_dicts = {**self._account_login_dict, **last_entry}
         return merged_dicts
 
