@@ -1,6 +1,7 @@
 """weight_gurus configuration flow."""
 from __future__ import annotations
 
+from dataclasses import dataclass
 from typing import Dict
 
 import voluptuous as vol
@@ -83,13 +84,15 @@ class WeightGurusFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         return False
 
 
+@dataclass
 class WeightGurusOptionsFlowHandler(config_entries.OptionsFlow):
     """Handle a option flow."""
 
-    def __init__(self, config_entry: ConfigEntry) -> None:
-        """Initialize options flow."""
-        self.config_entry = config_entry
-        self.options = dict(config_entry.options)
+    config_entry: ConfigEntry
+
+    def __post_init__(self) -> None:
+        """Initialize."""
+        self.options = dict(self.config_entry.options)
 
     async def async_step_init(
         self, user_input: dict | None = None
